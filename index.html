@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+
+        <!-- Add Book Form -->
+        <div class="form-container">
+            <h3>Add a New Book</h3>
+            <form action="add_book.php" method="post">
+                <input type="text" name="title" placeholder="Book Title" required>
+                <input type="text" name="author" placeholder="Author" required>
+                <input type="text" name="genre" placeholder="Genre" required>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+
+        <!-- Borrow Book Form -->
+        <div class="form-container">
+            <h3>Borrow a Book</h3>
+            <form action="borrow_book.php" method="post">
+                <input type="number" name="memberID" placeholder="Member ID" required>
+                <input type="number" name="bookID" placeholder="Book ID" required>
+                <button type="submit">Borrow</button>
+            </form>
+        </div>
+
+        <!-- Books Table -->
+        <div class="table-container">
+            <h3>Available Books</h3>
+            <table>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Available</th>
+                </tr>
+                <?php
+                include 'connect.php';
+                $result = $conn->query("SELECT * FROM Books");
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>{$row['BookID']}</td>
+                            <td>{$row['Title']}</td>
+                            <td>{$row['Author']}</td>
+                            <td>{$row['Genre']}</td>
+                            <td>" . ($row['Available'] ? 'Yes' : 'No') . "</td>
+                          </tr>";
+                }
+                $conn->close();
+                ?>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
