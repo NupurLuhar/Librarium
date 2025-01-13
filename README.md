@@ -1,4 +1,4 @@
-# Library-Management-System
+# Librarium : Library-Management-System
 The Library Management System is a simple web-based application designed to manage books, members, and borrowing transactions in a library. It provides an interface where users can add books, borrow books, and view the list of available books along with their details like title, author, genre, and availability. The system is built using HTML and CSS for the front-end, PHP for server-side scripting, and MySQL for database management. It features a clean, responsive design that adapts to various screen sizes, making it user-friendly and easy to navigate.
 
 To run this project, you need to set up a local server using tools like XAMPP or WAMP. First, create a database named LibraryDB in phpMyAdmin and execute the provided SQL script to set up tables for books, members, and transactions. Then, place the project files in the htdocs directory of your local server. Ensure the connect.php file contains your MySQL credentials to connect the application with the database. Start the server and open the application in a browser at http://localhost/library-management/index.html.
